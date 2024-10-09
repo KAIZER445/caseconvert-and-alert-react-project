@@ -1,0 +1,13 @@
+/* -------------Text Box--------------------- */
+
+.textbox {
+    resize: none;
+}
+
+.textbox:active,
+.textbox:focus {
+    box-shadow: none !important;
+}
+
+/* -------------Text Box--------------------- */
+
