@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
+import {Link} from 'react-router-dom'
 
 export default function Navbarcom({ CompanyName, theme, themechange, themechangedanger }) {
   const [switchOneChecked, setSwitchOneChecked] = useState(false);
@@ -16,7 +17,6 @@ export default function Navbarcom({ CompanyName, theme, themechange, themechange
       themechange();
     }else{
       setSwitchOneChecked(false);
-      setSwitchTwoChecked(false);
       themechange();
     }
   };
@@ -27,7 +27,6 @@ export default function Navbarcom({ CompanyName, theme, themechange, themechange
       setSwitchOneChecked(false);
       themechangedanger();
     }else{
-      setSwitchOneChecked(false);
       setSwitchTwoChecked(false);
       themechangedanger();
     }
@@ -42,8 +41,8 @@ export default function Navbarcom({ CompanyName, theme, themechange, themechange
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
+                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                <Nav.Link as={Link} to='/about'>About</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </div>

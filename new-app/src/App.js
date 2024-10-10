@@ -6,6 +6,8 @@ import Container from 'react-bootstrap/Container';
 import About from './components/About.js';
 import { useState } from 'react';
 import AllAlert from './components/AllAlert.js';
+import { Route,Routes } from 'react-router-dom';
+
 
 function App() {
   const [theme, setTheme] = useState('light');
@@ -44,15 +46,19 @@ function App() {
     }
   };
 
+
   return (
     <>
       <Navbarcom CompanyName='k xa' theme={theme} themechange={themechange} themechangedanger={themechangedanger} />
-      <AllAlert alert={alert} />
       <Container>
-        <Newform showAlert={showAlert} alert={alert} theme={theme}/>
-        <About theme={theme}/>
+      <AllAlert alert={alert} />
+      <Routes>
+        <Route path='/' element={<Newform showAlert={showAlert} alert={alert} theme={theme} />} />
+        <Route path='/about' element={<About theme={theme} />} />
+      </Routes>
       </Container>
     </>
+    
   );
 }
 
