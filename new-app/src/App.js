@@ -50,7 +50,7 @@ function App() {
       <AllAlert alert={alert} />
       <Container>
         <Newform showAlert={showAlert} alert={alert} theme={theme}/>
-        <About />
+        <About theme={theme}/>
       </Container>
     </>
   );
