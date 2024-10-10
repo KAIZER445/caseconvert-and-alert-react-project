@@ -1,11 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 
-export default function Navbarcom({ CompanyName, theme, themechange }) {
+export default function Navbarcom({ CompanyName, theme, themechange, themechangedanger }) {
+  const [switchOneChecked, setSwitchOneChecked] = useState(false);
+  const [switchTwoChecked, setSwitchTwoChecked] = useState(false);
+
+  const handleSwitchOneChange = () => {
+    if(switchOneChecked=== false){
+      setSwitchOneChecked(true);
+      setSwitchTwoChecked(false);
+      themechange();
+    }else{
+      setSwitchOneChecked(false);
+      setSwitchTwoChecked(false);
+      themechange();
+    }
+  };
+
+  const handleSwitchTwoChange = () => {
+    if(switchTwoChecked=== false){
+      setSwitchTwoChecked(true);
+      setSwitchOneChecked(false);
+      themechangedanger();
+    }else{
+      setSwitchOneChecked(false);
+      setSwitchTwoChecked(false);
+      themechangedanger();
+    }
+
+  };
   return (
     <div>
       <Navbar expand="lg" bg={theme} data-bs-theme={theme} className='shadow'>
@@ -20,16 +47,26 @@ export default function Navbarcom({ CompanyName, theme, themechange }) {
               </Nav>
             </Navbar.Collapse>
           </div>
-          <Form>
-            <Form.Check
-              type="switch"
-              id="custom-switch"
-              onChange={themechange}
-            />
-          </Form>
+          <div className='d-flex gap-1'>
+            <Form data-bs-theme='dark'>
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                checked={switchOneChecked}
+                onChange={handleSwitchOneChange}
+              />
+            </Form>
+            <Form>
+              <Form.Check
+                type="switch"
+                id="custom-switch-red"
+                checked={switchTwoChecked}
+                onChange={handleSwitchTwoChange}
+              />
+            </Form>
+          </div>
         </Container>
       </Navbar>
-
     </div>
   );
 }

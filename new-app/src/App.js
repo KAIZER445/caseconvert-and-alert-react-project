@@ -21,25 +21,35 @@ function App() {
   }
 
   const themechange = () => {
-    if (theme === 'light') {
+    if (theme !== 'dark') {
       setTheme('dark');
       document.body.style.backgroundColor = '#181818';
       document.body.style.color = 'white';
-      showAlert('Dark mode enabled', 'dark')
     } else {
       setTheme('light');
       document.body.style.backgroundColor = 'white';
       document.body.style.color = 'black';
-      showAlert('light mode enabled', 'secondary')
+    }
+  };
+
+  const themechangedanger = () => {
+    if (theme !== 'danger') {
+      setTheme('danger');
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+    } else {
+      setTheme('light');
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
     }
   };
 
   return (
     <>
-      <Navbarcom CompanyName='k xa' theme={theme} themechange={themechange} />
+      <Navbarcom CompanyName='k xa' theme={theme} themechange={themechange} themechangedanger={themechangedanger} />
       <AllAlert alert={alert} />
       <Container>
-        <Newform showAlert={showAlert} alert={alert}/>
+        <Newform showAlert={showAlert} alert={alert} theme={theme}/>
         <About />
       </Container>
     </>

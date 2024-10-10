@@ -8,6 +8,9 @@ export default function Newform({ fromheading = 'Case Converter',theme,showAlert
         if(prevtext!==''){
             showAlert('converted to uppercase','dark')
         }
+        else{
+            showAlert('Text box is empty','danger')
+        }
 
     }
 
@@ -16,14 +19,24 @@ export default function Newform({ fromheading = 'Case Converter',theme,showAlert
         if(prevtext!==''){
             showAlert('converted to lowercase','dark')
         }
+        else{
+            showAlert('Text box is empty','danger')
+        }
     }
 
     const copytext = () => {
         navigator.clipboard.writeText(prevtext)
+        showAlert('text copied','dark')
     }
 
     const cleartext = () => {
         newtext('')
+        if(prevtext!==''){
+            showAlert('Text cleared','dark')
+        }
+        else{
+            showAlert('Text box is empty','danger')
+        }
     }
 
     const textcontent = (event) => {
@@ -52,16 +65,16 @@ export default function Newform({ fromheading = 'Case Converter',theme,showAlert
                     <Form.Control as="textarea" className='textbox' value={prevtext} onChange={textcontent} rows={12} />
                 </Form.Group>
                 <div className='d-flex justify-content-center gap-5'>
-                    <Button className='btn-dark' onClick={convertuppercase}>
+                    <Button className={`btn-${theme} shadow`} onClick={convertuppercase}>
                         Convert to uppercase
                     </Button>
-                    <Button className='btn-dark' onClick={convertlowercase}>
+                    <Button className={`btn-${theme} shadow`} onClick={convertlowercase}>
                         Convert to lowercase
                     </Button>
-                    <Button className='btn-dark' onClick={copytext}>
+                    <Button className={`btn-${theme} shadow`} onClick={copytext}>
                         Copy text
                     </Button>
-                    <Button className='btn-dark' onClick={cleartext}>
+                    <Button className={`btn-${theme} shadow`} onClick={cleartext}>
                         Clear textarea
                     </Button>
                 </div>
