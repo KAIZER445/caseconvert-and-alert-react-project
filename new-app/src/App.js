@@ -49,7 +49,7 @@ function App() {
 
   return (
     <>
-      <Navbarcom CompanyName='k xa' theme={theme} themechange={themechange} themechangedanger={themechangedanger} />
+      <Navbarcom CompanyName='CaseMani' theme={theme} themechange={themechange} themechangedanger={themechangedanger} />
       <Container>
       <AllAlert alert={alert} />
       <Routes>
